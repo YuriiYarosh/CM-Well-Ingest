@@ -1,0 +1,12 @@
+directories:
+  .
+
+derive_targets_from_directories: true
+
+targets:
+  //:ingest
+  //:lib
+  //:test
+
+additional_languages:
+  scala

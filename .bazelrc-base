@@ -1,0 +1,6 @@
+build --verbose_failures
+build --strategy=Scalac=worker --strategy=ScroogeRule=worker
+build --worker_sandboxing
+build --ram_utilization_factor=80
+build --symlink_prefix=.bazel/
+build --verbose_failures
