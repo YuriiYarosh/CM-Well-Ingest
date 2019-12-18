@@ -106,6 +106,19 @@ This will create `/usr/local/bin/scalafmt_ng` and `/usr/local/bin/scalafmt` wrap
 so you can setup efficient [On Save Formatting](https://i.imgur.com/6qbZbpH.png) with the [File Watchers](https://plugins.jetbrains.com/plugin/7177-file-watchers)
 Idea plugin afterwards.
 
+### [Scalastyle](http://www.scalastyle.org)
+
+[Scalastyle](http://www.scalastyle.org) does not support [nailgun](https://github.com/facebook/nailgun) atm,
+but that's ok cause it's better to setup it as a precommit [git hook](https://www.atlassian.com/git/tutorials/git-hooks).
+
+```bash
+coursier bootstrap --standalone org.scalastyle:scalastyle_2.12:1.0.0 \
+  -r sonatype:snapshots \
+  -o /usr/local/bin/scalastyle -f --main org.scalastyle.Main
+
+/usr/local/bin/scalastyle -c scalastyle-config.xml src test
+```
+
 ## About CM-Well project
 
 You can learn more at [CM-Well](https://cm-well.github.io/CM-Well/index.html) documentation site.
