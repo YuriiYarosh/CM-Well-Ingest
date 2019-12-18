@@ -14,6 +14,10 @@ Feel free to
  ```bash
 docker run -it yuriiyarosh/cmwell_ingest:1.0 help
 ```
+or
+```bash
+docker run -it yuriiyarosh/cmwell_ingest_jvm:1.0 help
+```
 
  * we also support [homebrew](https://brew.sh/) for macOS
 
