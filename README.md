@@ -58,6 +58,16 @@ sudo xcodebuild -license
 
 The general Development Setup on Windows and Linux should be similar.
 
+Assuming current GraalVM version 19.3.0, install `native-image` tool with
+```bash
+GRAAL_VERSION="19.3.0"
+/Library/Java/JavaVirtualMachines/graalvm-ce-java8-$GRAAL_VERSION/Contents/Home/bin/gu install native-image
+```
+
+### Building
+
+### Testing
+
 ### [Idea](https://www.jetbrains.com/idea/)
 
 Just install the Idea [Bazel plugin](https://plugins.jetbrains.com/plugin/8609-bazel/).
@@ -109,7 +119,7 @@ Idea plugin afterwards.
 ### [Scalastyle](http://www.scalastyle.org)
 
 [Scalastyle](http://www.scalastyle.org) does not support [nailgun](https://github.com/facebook/nailgun) atm,
-but that's ok cause it's better to setup it as a precommit [git hook](https://www.atlassian.com/git/tutorials/git-hooks).
+but that's ok, because it works better as a precommit [git hook](https://www.atlassian.com/git/tutorials/git-hooks).
 
 ```bash
 coursier bootstrap --standalone org.scalastyle:scalastyle_2.12:1.0.0 \
@@ -121,7 +131,7 @@ coursier bootstrap --standalone org.scalastyle:scalastyle_2.12:1.0.0 \
 
 ## About CM-Well project
 
-You can learn more at [CM-Well](https://cm-well.github.io/CM-Well/index.html) documentation site.
+You can learn more at [CM-Well documentation site](https://cm-well.github.io/CM-Well/index.html).
 
 ## License
 

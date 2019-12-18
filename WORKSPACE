@@ -1,5 +1,5 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load("//:deps.bzl", "scala_deps", "project_deps", "project_test_deps")
+load("//:deps.bzl", "project_deps", "project_test_deps")
 
 ## Scala ##
 
@@ -64,7 +64,7 @@ http_archive(
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 bazel_skylib_workspace()
 
-## Project dependencies
+## Project dependencies ##
 
 maven_install(
     artifacts = project_deps + project_test_deps,
@@ -83,3 +83,28 @@ maven_install(
 
 load("@maven//:defs.bzl", "pinned_maven_install")
 pinned_maven_install()
+
+## Docker ##
+
+docker_version="0.13.0"
+docker_version_sha256="7adbf4833bc56e201db3076e864f6f4fd3043b5895e5f7e6ab953d385b49a926"
+
+http_archive(
+    name = "io_bazel_rules_docker",
+    sha256 = "df13123c44b4a4ff2c2f337b906763879d94871d16411bf82dcfeba892b58607",
+    strip_prefix = "rules_docker-{}".format(docker_version),
+    urls = ["https://github.com/bazelbuild/rules_docker/releases/download/v{}/rules_docker-v{}.tar.gz".format(docker_version, docker_version)],
+)
+
+load("@io_bazel_rules_docker//repositories:repositories.bzl", container_repositories = "repositories")
+container_repositories()
+
+load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps = "deps")
+container_deps()
+
+# load("@io_bazel_rules_docker//container:container.bzl", "container_pull")
+# container_pull(
+#   name = "java_base",
+#   registry = "gcr.io",
+#   repository = "distroless/java",
+# )
