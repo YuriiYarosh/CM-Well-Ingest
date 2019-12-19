@@ -69,9 +69,28 @@ scala_binary(
     unused_dependency_checker_mode = "warn",
 )
 
+scala_library(
+    name = "benchmark_lib",
+    srcs = glob([
+        "test/benchmark/**/*.scala"
+        ]),
+    deps = [":lib"] + maven_deps,
+    unused_dependency_checker_mode = "warn"
+)
+
+scala_binary(
+    name = "ingest_benchmark",
+    main_class = "cmwell.ingest.benchmark.Main",
+    deps = [
+        ":benchmark_lib",
+    ],
+    unused_dependency_checker_mode = "warn",
+)
+
 scala_doc(
     name = "doc",
     deps = [
         ":lib",
+        ":benchmark_lib"
     ],
 )

@@ -27,24 +27,60 @@ brew install yuriiyarosh/formulas/cmwell_ingest
 ```
 * or just download the binary from the [releases page]()
 
+## Building
+
+To build the respective docker images you'll need
+
+ * [JDK or JRE](https://adoptopenjdk.net/)
+ * [Docker](https://docs.docker.com/v17.12/docker-for-mac/install)
+ * [Ammonite](https://ammonite.io/)
+ 
+See the [Development]() section bellow for details.
+
+**Make sure** you've [enabled](https://i.imgur.com/jQ4WFj1.png) docker [experimental features](https://docs.docker.com/assemble/install/), 
+it's needed only for image [layers squashing](https://docs.docker.com/engine/reference/commandline/build/#squash-an-images-layers---squash-experimental).  
+
+Running
+ ```bash
+ amm images/build.sc
+```
+will build the respective docker images. 
+
+## Testing
+
+## Benchmarking
+
 ## Development
 
-On macOS, you need
+Usual dependencies
 
  * [Homebrew](https://brew.sh/)
  * [JDK](https://adoptopenjdk.net/)
  * [Bazel](https://bazel.build/)
  * [GraalVM](https://www.graalvm.org/)
+ 
+ and optionally
+
+ * [Docker](https://docs.docker.com/v17.12/docker-for-mac/install)
+ * [Ammonite](https://ammonite.io/)
+
+to build the docker images
 
 ```bash
+# JDK
+
 brew tap AdoptOpenJDK/openjdk
 brew cask install adoptopenjdk8-openj9-large
 
 echo -e "\nexport JAVA_HOME=`/usr/libexec/java_home -v 1.8`" >> ~/.zshrc
 echo -e "export PATH=\"\$PATH:\$JAVA_HOME/bin\"" >> ~/.zshrc
 
+# Bazel
+
 brew tap bazelbuild/tap
 brew install bazelbuild/tap/bazel
+
+# GraalVM
 
 brew tap graalvm/tap
 brew cask install graalvm-ce-java8
@@ -54,6 +90,14 @@ brew cask install graalvm-ce-java8
 
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 sudo xcodebuild -license
+
+# Ammonite and docker to build the images 
+
+brew cask install docker
+
+sudo sh -c '(echo "#!/usr/bin/env sh" && \
+    curl -L https://github.com/lihaoyi/Ammonite/releases/download/1.9.1/2.12-1.9.1) > /usr/local/bin/amm && \
+    chmod +x /usr/local/bin/amm'
 ```
 
 * replace `echo -e >> ~/.zshrc` with `echo -e "..." >> ~/.bashrc` if you're using **bash**
@@ -68,9 +112,6 @@ GRAAL_VERSION="19.3.0"
 /Library/Java/JavaVirtualMachines/graalvm-ce-java8-$GRAAL_VERSION/Contents/Home/bin/gu install native-image
 ```
 
-### Building
-
-### Testing
 
 ### [Idea](https://www.jetbrains.com/idea/)
 
@@ -87,7 +128,7 @@ There's no need to import [BUILD](BUILD) file directly, but feel free to do so i
 
 ### [Scalafmt](https://scalameta.org/scalafmt/)
 
-**Idea Bundled** scalafmt is obsolete, and autoupdate is broken atm.
+**Idea Bundled** scalafmt is outdated, and auto-update is broken atm.
 
 Up-to-date [nailgun enabled](http://www.martiansoftware.com/nailgun/) scalafmt installation is advised,
 due to scalafmt benefiting from JIT, this method also works great for editors like [VSCode](https://code.visualstudio.com/).

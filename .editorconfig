@@ -11,6 +11,12 @@ charset = utf-8
 trim_trailing_whitespace = true
 indent_size = 4
 
+[Dockerfile]
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
 [**.{json,conf,xml}]
 insert_final_newline = true
 trim_trailing_whitespace = true
