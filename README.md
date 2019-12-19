@@ -40,11 +40,11 @@ See the [Development]() section bellow for details.
 **Make sure** you've [enabled](https://i.imgur.com/jQ4WFj1.png) docker [experimental features](https://docs.docker.com/assemble/install/), 
 it's needed only for image [layers squashing](https://docs.docker.com/engine/reference/commandline/build/#squash-an-images-layers---squash-experimental).  
 
-Running
  ```bash
- amm images/build.sc
+cd images/
+amm images/build.sc
 ```
-will build the respective docker images. 
+will build all the respective docker images. 
 
 ## Testing
 

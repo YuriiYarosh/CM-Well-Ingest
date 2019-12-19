@@ -2,6 +2,7 @@
 *.log
 
 .bazel/
+.bazel-*/
 .bazel-out
 
 .ijwb/
