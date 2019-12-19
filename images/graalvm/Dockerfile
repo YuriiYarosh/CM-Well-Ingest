@@ -1,0 +1,1 @@
+FROM yuriiyarosh/openj9:8u232
