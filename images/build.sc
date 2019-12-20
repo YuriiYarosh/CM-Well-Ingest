@@ -1,6 +1,3 @@
-#!/bin/bash
-    exec amm "$0" `dirname "$0"` "$@"
-!#
 interp.load.ivy(
   "com.lihaoyi" %
     s"ammonite-shell_${scala.util.Properties.versionNumberString}" %

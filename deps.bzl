@@ -77,6 +77,7 @@ project_test_deps = [
 maven_deps = [ # formats to "@maven//:com_github_finagle_finch_core_2_13"
     "@{}//:{}".format(deps_pkg,
         dep.replace("_{}:{}", "_{}".format(scala_version_short))
+            .replace(":{}", "")
             .replace(":", "_")
             .replace("-", "_")
             .replace(".", "_")
@@ -84,9 +85,10 @@ maven_deps = [ # formats to "@maven//:com_github_finagle_finch_core_2_13"
 ]
 
 maven_test_deps = [
-    dep.format(deps_pkg) for dep in [
-        "@{}//:org_scalacheck_scalacheck",
-        "@{}//:org_scalatest_scalatest",
-        "@{}//:org_typelevel_discipline"
+    dep.format(deps_pkg, scala_version_short)
+        .replace(".", "_") for dep in [
+        "@{}//:org_scalacheck_scalacheck_{}",
+        "@{}//:org_scalatest_scalatest_{}",
+        "@{}//:org_typelevel_discipline_{}"
     ]
 ]

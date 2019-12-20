@@ -1,6 +1,18 @@
 # CM-Well-Ingest
 
-CM-Well Ingest tool
+CM-Well Ingest Tool - uploads graph data into the [CM-Well](https://cm-well.github.io/CM-Well/index.html) cluster.
+
+
+Contents:
+
+ * [Usage](https://github.com/YuriiYarosh/CM-Well-Ingest#Usage)
+ * [Installation](https://github.com/YuriiYarosh/CM-Well-Ingest#Installation)
+ * [Building](https://github.com/YuriiYarosh/CM-Well-Ingest#Building)
+ * [Testing](https://github.com/YuriiYarosh/CM-Well-Ingest#Testing)
+ * [Benchmarks](https://github.com/YuriiYarosh/CM-Well-Ingest#Benchmarks)
+ * [Development](https://github.com/YuriiYarosh/CM-Well-Ingest#Development)
+ * [Contributing](https://github.com/YuriiYarosh/CM-Well-Ingest#Contributing)
+ * [License](https://github.com/YuriiYarosh/CM-Well-Ingest#License)
 
 # Status: WIP
 
@@ -29,11 +41,13 @@ brew install yuriiyarosh/formulas/cmwell_ingest
 
 ## Building
 
+### Docker images
+
 To build the respective docker images you'll need
 
  * [JDK or JRE](https://adoptopenjdk.net/)
  * [Docker](https://docs.docker.com/v17.12/docker-for-mac/install)
- * [Ammonite](https://ammonite.io/)
+ * Optionally [Ammonite](https://ammonite.io/)
  
 See the [Development](https://github.com/YuriiYarosh/CM-Well-Ingest#development) section bellow for details.
 
@@ -45,9 +59,32 @@ amm images/build.sc
 ```
 will build all the respective docker images. 
 
+Feel free to build all the images manually with
+```bash
+cd images
+docker build -t yuriiyarosh/openj9:8u232 openj9
+docker build -t yuriiyarosh/graalvm:19.3.0 graalvm
+docker build -t yuriiyarosh/bazel:2.0.0 bazel
+docker build -t yuriiyarosh/cmwell_ingest:1.0.0 cmwell_ingest
+docker build -t yuriiyarosh/cmwell_ingest_jvm:1.0.0 cmwell_ingest_jvm
+docker build -t yuriiyarosh/cmwell_ingest_test:1.0.0 cmwell_ingest_test
+docker build -t yuriiyarosh/cmwell_ingest_benchmark:1.0.0 cmwell_ingest_benchmark
+```
+
+### With [Bazel](https://bazel.build/)
+
+In addition to JDK you'll need 
+ * [Bazel](https://bazel.build/)
+ * [GraalVM](https://www.graalvm.org/)
+ 
+ See the [Development](https://github.com/YuriiYarosh/CM-Well-Ingest#development) section bellow for details.
+
+
+for bazel builds
+
 ## Testing
 
-## Benchmarking
+## Benchmarks
 
 ## Development
 
@@ -110,7 +147,6 @@ Assuming current GraalVM version 19.3.0, install `native-image` tool with
 GRAAL_VERSION="19.3.0"
 /Library/Java/JavaVirtualMachines/graalvm-ce-java8-$GRAAL_VERSION/Contents/Home/bin/gu install native-image
 ```
-
 
 ### [Idea](https://www.jetbrains.com/idea/)
 
@@ -176,6 +212,8 @@ coursier bootstrap --standalone org.scalastyle:scalastyle_2.12:1.0.0 \
 ## About CM-Well project
 
 You can learn more at [CM-Well documentation site](https://cm-well.github.io/CM-Well/index.html).
+
+## Contributing
 
 ## License
 

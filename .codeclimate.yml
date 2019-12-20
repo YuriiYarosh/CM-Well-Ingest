@@ -1,0 +1,29 @@
+version: "2"
+checks:
+  argument-count:
+    config:
+      threshold: 32
+  complex-logic:
+    config:
+      threshold: 8
+  file-lines:
+    config:
+      threshold: 600
+  method-complexity:
+    config:
+      threshold: 10
+  method-count:
+    config:
+      threshold: 200
+  method-lines:
+    config:
+      threshold: 300
+  nested-control-flow:
+    config:
+      threshold: 8
+  return-statements:
+    config:
+      threshold: 6
+plugins:
+  scalastyle:
+    enabled: true

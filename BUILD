@@ -32,7 +32,7 @@ scala_toolchain(
     scalac_jvm_flags = ["-Xmx2G"],
     scala_test_jvm_flags = ["-Xmx4G"],
     enable_code_coverage_aspect = "on",
-    unused_dependency_checker_mode = "warn",
+    unused_dependency_checker_mode = "off",
 )
 
 toolchain(
@@ -47,7 +47,7 @@ scala_library(
         "src/**/*.scala"
         ]),
     deps = maven_deps,
-    unused_dependency_checker_mode = "warn"
+    unused_dependency_checker_mode = "off",
 )
 
 scala_test_suite(
@@ -66,7 +66,7 @@ scala_binary(
     deps = [
         ":lib",
     ],
-    unused_dependency_checker_mode = "warn",
+    unused_dependency_checker_mode = "off",
 )
 
 scala_library(
@@ -75,7 +75,7 @@ scala_library(
         "test/benchmark/**/*.scala"
         ]),
     deps = [":lib"] + maven_deps,
-    unused_dependency_checker_mode = "warn"
+    unused_dependency_checker_mode = "off",
 )
 
 scala_binary(
@@ -84,7 +84,7 @@ scala_binary(
     deps = [
         ":benchmark_lib",
     ],
-    unused_dependency_checker_mode = "warn",
+    unused_dependency_checker_mode = "off",
 )
 
 scala_doc(
