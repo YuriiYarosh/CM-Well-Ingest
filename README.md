@@ -1,7 +1,10 @@
 # CM-Well-Ingest
 
-CM-Well Ingest Tool - uploads graph data into the [CM-Well](https://cm-well.github.io/CM-Well/index.html) cluster.
+[![Release](https://img.shields.io/badge/github/v/release/YuriiYarosh/CM-Well-Ingest)](https://github.com/YuriiYarosh/CM-Well-Ingest)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2d9f113b82dc0b06469b/maintainability)](https://codeclimate.com/github/YuriiYarosh/CM-Well-Ingest/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2d9f113b82dc0b06469b/test_coverage)](https://codeclimate.com/github/YuriiYarosh/CM-Well-Ingest/test_coverage)
 
+CM-Well Ingest Tool - uploads graph data into the [CM-Well](https://cm-well.github.io/CM-Well/index.html) cluster.
 
 Contents:
 
