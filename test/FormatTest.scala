@@ -2,4 +2,4 @@ package cmwell.ingest
 
 import org.scalatest._
 
-class FormatsTest extends FlatSpec {}
+class FormatTest extends FlatSpec {}
