@@ -1,5 +1,12 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load("//:deps.bzl", "project_deps", "project_test_deps", "opencensus_deps_base", "opencensus_version")
+load("//:deps.bzl",
+    "project_deps",
+    "project_test_deps",
+    "opencensus_deps_base",
+
+    "scala_version_short",
+    "opencensus_version",
+    "scalameter_version")
 
 ## Scala ##
 
@@ -81,8 +88,21 @@ opencensus_deps_with_exclusion = [
     ) for dep in opencensus_deps_base
 ]
 
+
+
+scalameter_dep_with_exclusion = [
+    maven.artifact(
+        group = "com.storm-enroute",
+        artifact = "scalameter_{}".format(scala_version_short),
+        version = scalameter_version,
+        exclusions = [
+            maven.exclusion(group = "org.mongodb", artifact = "casbah_2.112"),
+        ]
+    )
+]
+
 maven_install(
-    artifacts = project_deps + project_test_deps + opencensus_deps_with_exclusion,
+    artifacts = project_deps + project_test_deps + opencensus_deps_with_exclusion + scalameter_dep_with_exclusion,
     maven_install_json = "//:maven_install.json",
     repositories = [
         "https://repo1.maven.org/maven2",

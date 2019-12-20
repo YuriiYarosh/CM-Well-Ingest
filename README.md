@@ -1,12 +1,13 @@
-# CM-Well-Ingest
+# [CM-Well](https://github.com/CM-Well/CM-Well) Ingest Tool
 
-[![Release](https://img.shields.io/badge/github/v/release/YuriiYarosh/CM-Well-Ingest)](https://github.com/YuriiYarosh/CM-Well-Ingest)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2d9f113b82dc0b06469b/maintainability)](https://codeclimate.com/github/YuriiYarosh/CM-Well-Ingest/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2d9f113b82dc0b06469b/test_coverage)](https://codeclimate.com/github/YuriiYarosh/CM-Well-Ingest/test_coverage)
 
 CM-Well Ingest Tool - uploads graph data into the [CM-Well](https://cm-well.github.io/CM-Well/index.html) cluster.
 
-Contents:
+# Status: WIP
+
+### Contents:
 
  * [Usage](https://github.com/YuriiYarosh/CM-Well-Ingest#Usage)
  * [Installation](https://github.com/YuriiYarosh/CM-Well-Ingest#Installation)
@@ -16,8 +17,6 @@ Contents:
  * [Development](https://github.com/YuriiYarosh/CM-Well-Ingest#Development)
  * [Contributing](https://github.com/YuriiYarosh/CM-Well-Ingest#Contributing)
  * [License](https://github.com/YuriiYarosh/CM-Well-Ingest#License)
-
-# Status: WIP
 
 ## Usage
 
@@ -50,28 +49,24 @@ To build the respective docker images you'll need
 
  * [JDK or JRE](https://adoptopenjdk.net/)
  * [Docker](https://docs.docker.com/v17.12/docker-for-mac/install)
- * Optionally [Ammonite](https://ammonite.io/)
  
 See the [Development](https://github.com/YuriiYarosh/CM-Well-Ingest#development) section bellow for details.
 
 **Make sure** you've [enabled](https://i.imgur.com/jQ4WFj1.png) docker [experimental features](https://docs.docker.com/assemble/install/), 
 it's needed only for image [layers squashing](https://docs.docker.com/engine/reference/commandline/build/#squash-an-images-layers---squash-experimental).  
 
- ```bash
-amm images/build.sc
-```
-will build all the respective docker images. 
-
-Feel free to build all the images manually with
+Build all the images manually with
 ```bash
 cd images
-docker build -t yuriiyarosh/openj9:8u232 openj9
-docker build -t yuriiyarosh/graalvm:19.3.0 graalvm
-docker build -t yuriiyarosh/bazel:2.0.0 bazel
-docker build -t yuriiyarosh/cmwell_ingest:1.0.0 cmwell_ingest
-docker build -t yuriiyarosh/cmwell_ingest_jvm:1.0.0 cmwell_ingest_jvm
-docker build -t yuriiyarosh/cmwell_ingest_test:1.0.0 cmwell_ingest_test
-docker build -t yuriiyarosh/cmwell_ingest_benchmark:1.0.0 cmwell_ingest_benchmark
+export SECURITY_UPDATE="19.12.2019" # set to different date to initiate a security update
+alias dockersec="docker build --build-arg SECURITY_UPDATE=\$SECURITY_UPDATE"
+dockersec -t yuriiyarosh/openj9:8u232 openj9
+dockersec -t yuriiyarosh/graalvm:19.3.0 graalvm
+dockersec -t yuriiyarosh/bazel:2.0.0 bazel
+dockersec -t yuriiyarosh/cmwell_ingest:1.0.0 cmwell_ingest
+dockersec -t yuriiyarosh/cmwell_ingest_jvm:1.0.0 cmwell_ingest_jvm
+dockersec -t yuriiyarosh/cmwell_ingest_test:1.0.0 cmwell_ingest_test
+dockersec -t yuriiyarosh/cmwell_ingest_benchmark:1.0.0 cmwell_ingest_benchmark
 ```
 
 ### With [Bazel](https://bazel.build/)
@@ -101,7 +96,6 @@ The usual development dependencies for macOS are
  and optionally
 
  * [Docker](https://docs.docker.com/v17.12/docker-for-mac/install)
- * [Ammonite](https://ammonite.io/)
 
 to build the docker images
 
@@ -130,13 +124,9 @@ brew cask install graalvm-ce-java8
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 sudo xcodebuild -license
 
-# Ammonite and docker to build the images 
+# docker to build the respective container images 
 
 brew cask install docker
-
-sudo sh -c '(echo "#!/usr/bin/env sh" && \
-    curl -L https://github.com/lihaoyi/Ammonite/releases/download/1.9.1/2.12-1.9.1) > /usr/local/bin/amm && \
-    chmod +x /usr/local/bin/amm'
 ```
 
 * replace `echo -e >> ~/.zshrc` with `echo -e "..." >> ~/.bashrc` if you're using **bash**
@@ -217,6 +207,10 @@ coursier bootstrap --standalone org.scalastyle:scalastyle_2.12:1.0.0 \
 You can learn more at [CM-Well documentation site](https://cm-well.github.io/CM-Well/index.html).
 
 ## Contributing
+
+[CM-Well Ingest Tool](https://github.com/YuriiYarosh/CM-Well-Ingest) shares [contribution terms](https://github.com/CM-Well/CM-Well/blob/master/CONTRIBUTING.md) with the [CM-Well](https://github.com/CM-Well/CM-Well) Project.
+
+Contribution terms are not completely established at the moment and will change over time.
 
 ## License
 

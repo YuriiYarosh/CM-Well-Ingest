@@ -10,6 +10,7 @@ opencensus_version = "0.24.0"
 scalatest_version = "3.0.7"
 scalacheck_version = "1.14.2"
 discipline_version = "0.11.1"
+scalameter_version = "0.18"
 
 deps_pkg="maven"
 
@@ -69,7 +70,7 @@ project_deps = scala_deps  + scopt_deps + circe_deps + finch_deps
 project_test_deps = [
     "org.scalacheck:scalacheck_{}:{}".format(scala_version_short, scalacheck_version),
     "org.scalatest:scalatest_{}:{}".format(scala_version_short, scalatest_version),
-    "org.typelevel:discipline_{}:{}".format(scala_version_short, discipline_version)
+    "org.typelevel:discipline_{}:{}".format(scala_version_short, discipline_version),
 ]
 
 # Target Maven
@@ -89,6 +90,7 @@ maven_test_deps = [
         .replace(".", "_") for dep in [
         "@{}//:org_scalacheck_scalacheck_{}",
         "@{}//:org_scalatest_scalatest_{}",
-        "@{}//:org_typelevel_discipline_{}"
+        "@{}//:org_typelevel_discipline_{}",
+        "@{}//:com_storm_enroute_scalameter_{}"
     ]
 ]

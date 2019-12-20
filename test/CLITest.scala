@@ -10,6 +10,6 @@ class CLITest extends FlatSpec {
       List("", "") -> CLI.Config()
     )
 
-    testTable.foreach(args, conf => assert(CLI.parse(args) === conf))
+    testTable.foreach { case (args, conf) => assert(CLI.parse(args) === conf) }
   }
 }
