@@ -56,6 +56,25 @@ http_archive(
     sha256 = protobuf_version_sha256,
 )
 
+## Protobuf rules ##
+
+protobuf_rules_version="97d8af4dc474595af3900dd85cb3a29ad28cc313"
+protobuf_rules_version_sha256="602e7161d9195e50246177e7c55b2f39950a9cf7366f74ed5f22fd45750cd208"
+
+http_archive(
+    name = "rules_proto",
+    type = "tar.gz",
+    sha256 = protobuf_rules_version_sha256,
+    strip_prefix = "rules_proto-%s" % protobuf_rules_version,
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_proto/archive/%s.tar.gz" % protobuf_rules_version,
+        "https://github.com/bazelbuild/rules_proto/archive/%s.tar.gz" % protobuf_rules_version,
+    ],
+)
+load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
+rules_proto_dependencies()
+rules_proto_toolchains()
+
 ## Skylib ##
 
 skylib_version = "1.0.2"

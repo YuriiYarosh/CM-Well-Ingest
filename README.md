@@ -1,43 +1,62 @@
 # [CM-Well](https://github.com/CM-Well/CM-Well) Ingest Tool
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/2d9f113b82dc0b06469b/maintainability)](https://codeclimate.com/github/YuriiYarosh/CM-Well-Ingest/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/2d9f113b82dc0b06469b/test_coverage)](https://codeclimate.com/github/YuriiYarosh/CM-Well-Ingest/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2d9f113b82dc0b06469b/maintainability)](https://codeclimate.com/github/YuriiYarosh/CM-Well-SDK/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2d9f113b82dc0b06469b/test_coverage)](https://codeclimate.com/github/YuriiYarosh/CM-Well-SDK/test_coverage)
 
-CM-Well Ingest Tool - uploads graph data into the [CM-Well](https://cm-well.github.io/CM-Well/index.html) cluster.
+CM-Well SDK for
+
+ * Graph Data Ingestion into the [CM-Well](https://cm-well.github.io/CM-Well/index.html) cluster
+ * Querying the Infoton Store
+ * Scheduling CM-Well cluster Maintenance 
 
 # Status: WIP
 
 ### Contents:
 
- * [Usage](https://github.com/YuriiYarosh/CM-Well-Ingest#Usage)
- * [Installation](https://github.com/YuriiYarosh/CM-Well-Ingest#Installation)
- * [Building](https://github.com/YuriiYarosh/CM-Well-Ingest#Building)
- * [Testing](https://github.com/YuriiYarosh/CM-Well-Ingest#Testing)
- * [Benchmarks](https://github.com/YuriiYarosh/CM-Well-Ingest#Benchmarks)
- * [Development](https://github.com/YuriiYarosh/CM-Well-Ingest#Development)
- * [Contributing](https://github.com/YuriiYarosh/CM-Well-Ingest#Contributing)
- * [License](https://github.com/YuriiYarosh/CM-Well-Ingest#License)
+ * [Language Support](https://github.com/YuriiYarosh/CM-Well-SDK#Language_Support)
+ * [Usage](https://github.com/YuriiYarosh/CM-Well-SDK#Usage)
+ * [Installation](https://github.com/YuriiYarosh/CM-Well-SDK#Installation)
+ * [Building](https://github.com/YuriiYarosh/CM-Well-SDK#Building)
+ * [Testing](https://github.com/YuriiYarosh/CM-Well-SDK#Testing)
+ * [Benchmarks](https://github.com/YuriiYarosh/CM-Well-SDK#Benchmarks)
+ * [Development](https://github.com/YuriiYarosh/CM-Well-SDK#Development)
+ * [Contributing](https://github.com/YuriiYarosh/CM-Well-SDK#Contributing)
+ * [License](https://github.com/YuriiYarosh/CM-Well-SDK#License)
+
+## Language Support
+
+ CMWell SDK currently supports
+ 
+ * JVM Languages, SDK core is implemented using [scala](https://www.scala-lang.org/), see [API docs]() for details
+ * Base [Go](contrib/golang-sdk) also available
+ * [python](contrib/python-sdk) and [nodejs](contrib/node-sdk) are using Go bindings under the hood
+
+Primary CLI is also implemented in scala, but Golang port is also planned.
 
 ## Usage
+
+```scala
+
+```
 
 ## Installation
 
 Feel free to
- * use a [docker image]() as follows
+ * use a [docker image](images/cmwell_sdk) as follows
 
  ```bash
-docker run -it yuriiyarosh/cmwell_ingest:1.0 help
+docker run -it yuriiyarosh/cmwell_cli:1.0 help
 ```
 or
 ```bash
-docker run -it yuriiyarosh/cmwell_ingest_jvm:1.0 help
+docker run -it yuriiyarosh/cmwell_cli_jvm:1.0 help
 ```
 
  * we also support [homebrew](https://brew.sh/) for macOS
 
 ```bash
 brew tap yuriiyarosh/formulas
-brew install yuriiyarosh/formulas/cmwell_ingest
+brew install yuriiyarosh/formulas/cmwell_cli
 ```
 * or just download the binary from the [releases page]()
 
@@ -50,7 +69,7 @@ To build the respective docker images you'll need
  * [JDK or JRE](https://adoptopenjdk.net/)
  * [Docker](https://docs.docker.com/v17.12/docker-for-mac/install)
  
-See the [Development](https://github.com/YuriiYarosh/CM-Well-Ingest#development) section bellow for details.
+See the [Development](https://github.com/YuriiYarosh/CM-Well-SDK#development) section bellow for details.
 
 **Make sure** you've [enabled](https://i.imgur.com/jQ4WFj1.png) docker [experimental features](https://docs.docker.com/assemble/install/), 
 it's needed only for image [layers squashing](https://docs.docker.com/engine/reference/commandline/build/#squash-an-images-layers---squash-experimental).  
@@ -63,10 +82,10 @@ alias dockersec="docker build --build-arg SECURITY_UPDATE=\$SECURITY_UPDATE"
 dockersec -t yuriiyarosh/openj9:8u232 openj9
 dockersec -t yuriiyarosh/graalvm:19.3.0 graalvm
 dockersec -t yuriiyarosh/bazel:2.0.0 bazel
-dockersec -t yuriiyarosh/cmwell_ingest:1.0.0 cmwell_ingest
-dockersec -t yuriiyarosh/cmwell_ingest_jvm:1.0.0 cmwell_ingest_jvm
-dockersec -t yuriiyarosh/cmwell_ingest_test:1.0.0 cmwell_ingest_test
-dockersec -t yuriiyarosh/cmwell_ingest_benchmark:1.0.0 cmwell_ingest_benchmark
+dockersec -t yuriiyarosh/cmwell_sdk:1.0.0 cmwell_sdk
+dockersec -t yuriiyarosh/cmwell_sdk_jvm:1.0.0 cmwell_sdk_jvm
+dockersec -t yuriiyarosh/cmwell_sdk_test:1.0.0 cmwell_sdk_test
+dockersec -t yuriiyarosh/cmwell_sdk_benchmark:1.0.0 cmwell_sdk_benchmark
 ```
 
 ### With [Bazel](https://bazel.build/)
@@ -75,7 +94,7 @@ In addition to JDK you'll need
  * [Bazel](https://bazel.build/)
  * [GraalVM](https://www.graalvm.org/)
  
- See the [Development](https://github.com/YuriiYarosh/CM-Well-Ingest#development) section bellow for details.
+ See the [Development](https://github.com/YuriiYarosh/CM-Well-SDK#development) section bellow for details.
 
 
 for bazel builds
@@ -200,18 +219,18 @@ coursier bootstrap --standalone org.scalastyle:scalastyle_2.12:1.0.0 \
   -o /usr/local/bin/scalastyle -f --main org.scalastyle.Main
 
 /usr/local/bin/scalastyle -c scalastyle-config.xml src test
-```
+``` 
+
+## Contributing
+
+[CM-Well SDK](https://github.com/YuriiYarosh/CM-Well-SDK) shares [contribution terms](https://github.com/CM-Well/CM-Well/blob/master/CONTRIBUTING.md) with the [CM-Well](https://github.com/CM-Well/CM-Well) Project.
+
+Contribution terms are not completely established at the moment and will change over time.
 
 ## About CM-Well project
 
 You can learn more at [CM-Well documentation site](https://cm-well.github.io/CM-Well/index.html).
 
-## Contributing
-
-[CM-Well Ingest Tool](https://github.com/YuriiYarosh/CM-Well-Ingest) shares [contribution terms](https://github.com/CM-Well/CM-Well/blob/master/CONTRIBUTING.md) with the [CM-Well](https://github.com/CM-Well/CM-Well) Project.
-
-Contribution terms are not completely established at the moment and will change over time.
-
 ## License
 
-[CM-Well-Ingest](.) project is licensed under [Apache 2.0 License](LICENSE).
+[CM-Well-SDK](.) project is licensed under [Apache 2.0 License](LICENSE).
