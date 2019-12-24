@@ -1,9 +1,8 @@
-*.class
+.idea/
+.ijwb/
+
 *.log
 
 .bazel/
 .bazel-*/
 .bazel-out
-
-.ijwb/
-.idea/
