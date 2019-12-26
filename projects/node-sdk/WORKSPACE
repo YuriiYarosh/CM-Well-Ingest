@@ -1,4 +1,4 @@
-workspace(name = "node-sdk")
+workspace(name = "node_sdk")
 
 local_repository(
     name = "proto",

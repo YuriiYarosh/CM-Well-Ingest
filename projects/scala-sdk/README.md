@@ -163,7 +163,7 @@ GRAAL_VERSION="19.3.0"
 ### [Idea](https://www.jetbrains.com/idea/)
 
 Just install the Idea [Bazel plugin](https://plugins.jetbrains.com/plugin/8609-bazel/).
-and import [.bazelproject](.bazelproject) project view file.
+and import [.bazelproject](../../.bazelproject) project view file.
 
 Make sure correct Bazel path had been specified in
 

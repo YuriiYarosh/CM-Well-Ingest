@@ -1,0 +1,16 @@
+directories:
+  .
+
+derive_targets_from_directories: true
+
+targets:
+  @golang_sdk//:all
+  @node_sdk//:all
+  @python_sdk//:all
+  @scala_sdk//:all
+
+additional_languages:
+  scala
+  # go
+  python
+  # javascript

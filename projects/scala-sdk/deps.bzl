@@ -48,7 +48,7 @@ opencensus_deps_base = [
     "io.opencensus:opencensus-impl:{}",
     "io.opencensus:opencensus-exporter-metrics-ocagent:{}",
     "io.opencensus:opencensus-exporter-trace-ocagent:{}",
-    "io.opencensus:opencensus-projects-zpages:{}"
+    "io.opencensus:opencensus-contrib-zpages:{}"
 ]
 
 # we're performing exclusion at the WORKSPACE, so there's no need in `opencensus_deps` here

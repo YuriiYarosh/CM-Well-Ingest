@@ -1,4 +1,4 @@
-workspace(name = "golang-sdk")
+workspace(name = "golang_sdk")
 
 local_repository(
     name = "proto",

@@ -1,4 +1,4 @@
-workspace(name = "python-sdk")
+workspace(name = "python_sdk")
 
 local_repository(
     name = "proto",
