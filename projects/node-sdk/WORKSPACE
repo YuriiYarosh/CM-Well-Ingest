@@ -1,0 +1,11 @@
+workspace(name = "node-sdk")
+
+local_repository(
+    name = "proto",
+    path = "../proto-grpc",
+)
+
+local_repository(
+    name = "protogen",
+    path = "../protogen",
+)

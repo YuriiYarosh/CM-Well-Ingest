@@ -41,13 +41,6 @@ toolchain(
     toolchain_type = "@io_bazel_rules_scala//scala:toolchain_type",
 )
 
-java_library(
-    name = "flatbuf",
-    srcs = glib([
-        "src/flatbuffers/generated/**/*.java"
-    ])
-)
-
 scala_library(
     name = "lib",
     srcs = glob([
